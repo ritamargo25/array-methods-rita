@@ -11,23 +11,24 @@ const filterByServiceRecord = (candidate) => {
 };
 
 const sortByScore = (arr) => {
-    return arr.score((a, b) => b.score - a.score);
+    const arr2 = [...arr] //используем spread для создания копии массива
+    return arr2.sort((a, b) => //сортируем копию
+        b.score - a.score)
 };
 
 const getMeanAge = (arr) => {
     let sum = 0;
     for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+        sum += arr[i].age //здесь забыла про свойство по которому ищем сумму
     }
     return sum / arr.length;
 }
-console.log(getMeanAge([60, 35, 29, 45, 54]));
-
 
 const getMeanAgeReduce = (candidates) => {
     const sum = candidates.reduce((a, b) => a + b.age, 0);
     return sum / candidates.length;
-};
+}
+
 
 const getNamesOnly = (arr) => {
     return arr.name;
